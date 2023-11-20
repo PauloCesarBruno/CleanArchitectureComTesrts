@@ -3,7 +3,7 @@ using CleanArchitecture.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Invocando as classes Wxtensions.
+// Invocando as classes Extensions.
 builder.Services.ConfigurePersistenceApp(builder.Configuration);
 builder.Services.ConfigureApplicationApp();
 
