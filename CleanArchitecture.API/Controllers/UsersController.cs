@@ -30,7 +30,7 @@ public class UsersController : ControllerBase
     }
 
     /* Na Busca por email, ja que o ID é muito grande (Guid) não usei CQRS, Injetei o  
-     Repository _userRepository onde está o contrato de busca por E-mail. */
+     Repository _userRepository onde está o contrato de busca por E-mail.*/
     [HttpGet("e-mail")]
     public async Task<ActionResult<Response>> GetByEmail( string email,CancellationToken cancellationToken)
     {
