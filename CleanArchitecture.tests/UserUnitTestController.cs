@@ -34,18 +34,10 @@ public class UserUnitTestController
 
         // Instancia do AutoMapper:
         mapper = config.CreateMapper();
-
-        // Meu Contexto.
+       
         var context = new AppDbContext(dbContextOptions);
 
-        // Se eu fosse usar a Classe de Mock (DBUnitTestsMockInitialize).
-        // DBUnitTestsMockInitialize db = new DBUnitTestsMockInitialize();
-        // db.Seed(context);
-
-        // Como estou usando meu banco e Contexto Original, fica:
-        // Instancia do Repository...
         repository = new UserRepository(context);
-
     }
 
     // Inicio dos testes unitários:
