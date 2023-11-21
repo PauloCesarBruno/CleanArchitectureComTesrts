@@ -47,7 +47,7 @@ public class UserUnitTestController
 
     /* Testar o método GET do Controlador de UserMockController:
        Testar se o valor retornado é igual a um OkObjectResult 
-       é igual ao estatus code 200(Ok).*/
+       é igual ao StatusCode 200(Ok).*/
     [Fact]  // Informa que é um código de teste unitário.  
     public void GetUser_Return_OkResult_200_OK()
     {
