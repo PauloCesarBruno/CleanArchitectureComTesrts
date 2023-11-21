@@ -54,7 +54,6 @@ public class UserUnitTestController
         //Arrange  
         var controller = new UserMockController(null, repository, mapper);
 
-
         //Act
         var data = controller.GetAll();
 
@@ -69,7 +68,6 @@ public class UserUnitTestController
     {
         //Arrange  
         var controller = new UserMockController(null, repository, mapper);
-
 
         //Act
         var data = controller.GetAllBadRequest();
