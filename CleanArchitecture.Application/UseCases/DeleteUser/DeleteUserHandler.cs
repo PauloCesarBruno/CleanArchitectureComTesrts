@@ -23,7 +23,7 @@ public sealed class DeleteUserHandler :
                                         CancellationToken cancellationToken)
     {
         // Usando o Get para obter o usuario pelo Id.
-        var user = await _userRepository.Get(request.Id, cancellationToken);
+        var user = await _userRepository.GetById(request.Id, cancellationToken);
 
         if (user == null) return default;
 

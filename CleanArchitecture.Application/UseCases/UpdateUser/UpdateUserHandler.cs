@@ -21,7 +21,7 @@ public class UpdateUserHandler  : IRequestHandler<UpdateUserRequest, Response>
     public async Task<Response> Handle(UpdateUserRequest command,
                                                  CancellationToken cancellationToken)
     {
-        var user = await _userRepository.Get(command.Id, cancellationToken);
+        var user = await _userRepository.GetById(command.Id, cancellationToken);
         if (user == null) return default;
 
         user.Nome = command.Nome;

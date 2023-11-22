@@ -2,6 +2,7 @@
 using CleanArchitecture.Application.UseCases.CreateUser;
 using CleanArchitecture.Application.UseCases.DeleteUser;
 using CleanArchitecture.Application.UseCases.GetAllUser;
+using CleanArchitecture.Application.UseCases.GetUser;
 using CleanArchitecture.Application.UseCases.UpdateUser;
 using CleanArchitecture.Domain.Interfaces;
 using MediatR;
@@ -29,7 +30,20 @@ public class UsersController : ControllerBase
         return Ok(response);
     }
 
-    /* Na Busca por email, ja que o ID é muito grande (Guid) não usei CQRS, Injetei o  
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Response>> GetById(Guid? id)
+    {
+        if (id is null) return BadRequest();
+
+        var response = await _mediator.Send(new GetUserRequest((Guid)id));
+
+        if (response is null) return NotFound("Id " + id + " não encontrado!");
+
+
+        return Ok(response);
+    }
+
+    /* Na Busca por email, não usei CQRS, Injetei o  
      Repository _userRepository onde está o contrato de busca por E-mail.*/
     [HttpGet("e-mail")]
     public async Task<ActionResult<Response>> GetByEmail( string email,CancellationToken cancellationToken)
