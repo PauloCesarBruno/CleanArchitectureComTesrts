@@ -45,9 +45,9 @@ public class UserUnitTestController
     // TESTES DE CONSULTAS
     //===================================================================================================== 
 
-    /* Testar o método GET do Controlador de UserMockController:
-       Testar se o valor retornado é igual a um OkObjectResult 
-       é igual ao StatusCode 200(Ok).*/
+    /* Testar o método GetAll (na coleção de objetos) do Controlador de UserMockController:
+          Testar se o valor retornado é igual a um OkObjectResult 
+          é igual ao estatus code 200(Ok).*/
     [Fact]  // Informa que é um código de teste unitário.  
     public void GetUser_Return_OkResult_200_OK()
     {
@@ -57,12 +57,13 @@ public class UserUnitTestController
         //Act
         var data = controller.GetAll();
 
-        //Assert         
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
         Assert.IsType<OkObjectResult>(data.Result);
     }
-    /* Testar o método GET do Controlador de UserMockController:
-           Testar se o valor retornado é igual a um OkObjectResult 
-           é igual ao estatus code 400(BadRequest).*/
+    /* Testar o método GetAll (na coleção de objetos) do Controlador de UserMockController:
+           Testar se o valor retornado é igual a um BadRequestResult 
+           é igual ao estatus code 400 (BadRequest).*/
     [Fact]  // Informa que é um código de teste unitário.  
     public void GetUser_Return_BadRequest_400_BadRequest()
     {
@@ -72,9 +73,80 @@ public class UserUnitTestController
         //Act
         var data = controller.GetAllBadRequest();
 
-        //Assert        
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
         Assert.IsType<BadRequestResult>(data.Result);
     }
 
-    // AINDA NÃO TERMINEI OS TESTES UNITÁRIOS => PROCURANDO TEMPO....
+    /* Testar o método GetAll (na coleção de objetos)  do Controlador de UserMockController:
+           Testar se o valor retornado é igual a um NotFoundResult 
+           é igual ao estatus code 404 (NotFound).*/
+    [Fact]  // Informa que é um código de teste unitário.  
+    public void GetUser_Return_NotFound_404_NotFound()
+    {
+        //Arrange  
+        var controller = new UserMockController(null, repository, mapper);
+
+        //Act
+        var data = controller.GetAllNotFound();
+
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
+        Assert.IsType<NotFoundResult>(data.Result);
+    }
+
+    //==========================================================================================
+
+    /* Testar o método Get (um objeto) do Controlador de UserMockController:
+           Testar se o valor retornado é igual a um OkObjectResult 
+           é igual ao estatus code 200(Ok).*/
+    [Fact]  // Informa que é um código de teste unitário.  
+    public void GetUserId_Return_OkResult_200_OK()
+    {
+        //Arrange  
+        var controller = new UserMockController(null, repository, mapper);
+
+        //Act
+        var data = controller.GetById(Guid.NewGuid());
+
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
+        Assert.IsType<OkObjectResult>(data.Result);
+    }
+
+    /* Testar o método Get (um objeto) do Controlador de UserMockController:
+           Testar se o valor retornado é igual a um BadRequestResult 
+           é igual ao estatus code 400 (BadRequest).*/
+    [Fact]  // Informa que é um código de teste unitário.  
+    public void GetUserId_Return_BadRequest_400_BadRequest()
+    {
+        //Arrange  
+        var controller = new UserMockController(null, repository, mapper);
+
+        //Act
+        var data = controller.GetBadRequestById(Guid.NewGuid());
+
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
+        Assert.IsType<BadRequestResult>(data.Result);
+    }
+
+    /* Testar o método Get (um objeto)  do Controlador de UserMockController:
+           Testar se o valor retornado é igual a um NotFoundResult 
+           é igual ao estatus code 404 (NotFound).*/
+    [Fact]  // Informa que é um código de teste unitário.  
+    public void GetUserId_Return_NotFound_404_NotFound()
+    {
+        //Arrange  
+        var controller = new UserMockController(null, repository, mapper);
+
+        //Act
+        var data = controller.GetNotFfoundById(Guid.Empty);
+
+        //Assert  
+        // Muita atenção para o "Assert", ele tem que seguir a lógica do teste desejado.
+        Assert.IsType<NotFoundResult>(data.Result);
+    }
 }
+
+// AINDA NÃO TERMINEI OS TESTES UNITÁRIOS => PROCURANDO TEMPO....
