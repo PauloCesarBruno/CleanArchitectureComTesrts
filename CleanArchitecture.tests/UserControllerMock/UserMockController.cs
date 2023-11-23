@@ -22,7 +22,7 @@ public class UserMockController : ControllerBase
     }
 
     //===============================================================================================
-    // Teste dos Status code do GetAll:
+    // Teste dos Status Codes do GetAll:
 
     [HttpGet]
     public ActionResult<List<Response>> GetAll()
@@ -58,7 +58,7 @@ public class UserMockController : ControllerBase
     }
 
     //===============================================================================================
-    // Teste dos Status code do GetById:
+    // Teste dos Status Codes do GetById:
 
     [HttpGet("{id}")]
     public ActionResult<Response> GetById(Guid? id)
@@ -93,6 +93,5 @@ public class UserMockController : ControllerBase
         return Ok(response);
     }      
 }
-
 
 // AINDA NÃO TERMINEI OS TESTES UNITÁRIOS => PROCURANDO TEMPO....
